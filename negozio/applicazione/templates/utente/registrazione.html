@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Registration page</title>
+        <meta name="description" content="Registration page" />
+        <meta name="keywords" content="" />
+        <meta name="author" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+
+    <body>
+        <!-- div che contiene il form per la registrazione -->
+        <div class="registrazione">
+            <h1>Registration page</h1> 
+
+            <div>
+                <a href="../login"><button class="button" id="login" type="button" value="login">Login</button></a>
+            </div>
+
+            <br><hr><br>
+
+            <div class="RegistrazioneForm">
+            <!-- form per inserire i dati e registrarsi -->
+                <h4>Inserisci username e password</h4>
+                <form method="post">
+                    <p style="color:red">{{ errore }}</p>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input class="button" id="registrati" type="submit" value="Registrati">
+                </form>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="centered-footer">
+            <h5>Progetto di Michele Melis, Manolo Sainas, Chiara Ganga</h5>
+        </footer>
+        
+    </body>
+</html>

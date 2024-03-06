@@ -1,0 +1,38 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Login page</title>
+        <meta name="description" content="Login Page" />
+        <meta name="keywords" content="" />
+        <meta name="author" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+
+    <body>
+        <h1 id="titolo">Login page</h1> 
+
+        <!-- div che contiene il form per il login -->
+        <div class="login">
+            <form method="post">
+                <p style="color:red">{{ errore }}</p>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input class="button" type="submit" name="login" id="login" value="Login">
+                <p>Non sei registrato? <a id="registrazione" class="registrazione" href="../registrazione">Registrati qui!</a></p>  
+            </form>
+        </div> 
+        
+        <!-- Footer -->
+        <footer class="centered-footer">
+            <h5>Progetto di Michele Melis, Manolo Sainas, Chiara Ganga</h5>
+        </footer>
+
+    </body>
+</html>
+

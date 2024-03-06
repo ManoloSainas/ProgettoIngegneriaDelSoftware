@@ -1,0 +1,46 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Aggiungi prodotto</title>
+        <meta name="description" content="Aggiungi prodotto" />
+        <meta name="keywords" content="" />
+        <meta name="author" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+
+    <body>      
+        <div class="aggProd">
+
+            <!-- Div contenente la home -->
+            <div>
+                <h1>Aggiungi prodotto</h1> 
+                
+                <a href="../Home_amministratore"><button class="button" id="home" type="button" value="home">Home</button></a>
+            </div>
+
+            <br><hr><br>
+
+            <!-- Form per inserire un nuovo prodotto -->
+            <div class="AggiungiProdottoForm">
+                <h4>Inserisci le informazioni del prodotto</h4>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="hidden" name="prodotto_id" value="{{prodotto_id}}">
+                    <input class="button" id="aggiungiProdotto" type="submit" value="Aggiungi il prodotto">
+                </form>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="centered-footer">
+            <h5>Progetto di Michele Melis, Manolo Sainas, Chiara Ganga</h5>
+        </footer>
+
+    </body>
+</html>

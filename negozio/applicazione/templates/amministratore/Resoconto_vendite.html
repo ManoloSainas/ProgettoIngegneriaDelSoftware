@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Resoconto vendite</title>
+        <meta name="description" content="Resoconto vendite" />
+        <meta name="keywords" content="" />
+        <meta name="author" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+
+    <body>      
+        <div class="resVen">
+
+            <!-- Div contenente la home e il Filtri -->
+            <div>
+                <h1>Resoconto vendite</h1> 
+        
+                <a href="../Home_amministratore"><button class="button" id="home" type="button" value="home">Home</button></a>
+                
+            </div>
+
+            <br><hr><br>
+
+            
+            <div class="FiltroResocontoVendite">
+                <!-- Filtro per cercare mediante un form -->
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input class="button" id="filtra" type="submit" value="Filtra">
+                </form> 
+            </div>
+            
+
+            <br>
+
+            <!-- Tabella contenente il resoconto -->
+            <div>
+                <table id="resocontoVendite">
+                    <thead>
+                        <tr>
+                            <th><b>Nome prodotto</b></th>
+                            <th><b>Tipologia</b></th>
+                            <th><b>Prezzo</b></th>
+                            <th><b>N° pezzi venduti</b></th>
+                            <th><b>Totale</b></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Qui verranno inserite le righe per i prodotti -->
+                        {% for prodottoVenduto in resocontoVendite %}
+                        <tr class="prodottoVenduto">
+                            <td class="nome"> {{ prodottoVenduto.nome }} </td>
+                            <td class="tipologia"> {{ prodottoVenduto.tipologia }} </td>
+                            <td class="prezzo"> {{ prodottoVenduto.prezzo }} </td>
+                            <td class="quantita"> {{ prodottoVenduto.quantita }} </td>
+                            <td class="ricavo"> {{ prodottoVenduto.ricavo }}</td>
+                        </tr>
+                        {% endfor %}
+                    <tbody>
+                </table>  
+
+                <br>
+                
+                <table id="totale">
+                    <tr>
+                        <th><b>Totale vendite</b></th>
+                        <th>{{stock.totale_prodotti_venduti}}</th>   <!-- Qui verrà inserito il totale dei prodotti venduti -->
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="centered-footer">
+            <h5>Progetto di Michele Melis, Manolo Sainas, Chiara Ganga</h5>
+        </footer>
+
+    </body>
+</html>

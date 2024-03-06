@@ -1,0 +1,116 @@
+/* Colore del background di tutte le pagine html */
+body {
+    background-color: #caeff8;
+ }
+
+ /* Modifica lo stile degli h1*/
+h1 {
+    background-color: #6171ff;
+    font-size: 30px;
+    text-align: center;
+}
+
+h2{
+    font-size: 24px;
+}
+
+ /* Modifica dello stile dei bottoni */
+.button {
+background-color: #02bd8e; 
+border: 2px solid #6171ff;
+color: white;
+padding: 9px 26px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+border-radius: 8px;
+}
+
+/* Modifica dello stile dei bottoni quando vengono puntati dal cursore */
+.button:hover {
+    background-color: #1b3dff; 
+    color: white;
+}
+
+/* Modifica lo stile delle tabelle */
+  table, th, td {
+    border: 1px solid;
+    border-collapse: collapse;
+  }
+
+/* Modifica lo stile degli <hr> */
+hr{
+    border-top: 2px solid #6171ff;
+}
+
+/* Modifica dello stile del link per registrarsi */
+.registrati {
+    color: #1b3dff;
+}
+.registrati:hover {
+    color: #02178f;
+}
+
+/* Modifica la dimensione del link alla pagina della registrazione */
+p {
+    font-size: 16px;
+}
+
+/* Modifica del form del login*/
+.login, .RegistrazioneForm{
+    background-color: white;
+    margin: auto;
+    width: 37%;
+    border: 2px solid #02178f;
+    padding: 20px;
+    text-align: center;
+    font-size: 20px;
+}
+
+/* Modifica del form del logout*/
+#logout {
+    float: right;
+    margin-right: 20px;
+}
+
+/* Modifica del form del logout dal Carrello*/
+#logoutCarr {
+    float: right;
+    margin-right: 20px;
+}
+
+/* Modifica del form del footer*/
+.centered-footer {
+    text-align: center;
+    padding: 10px;
+    font-weight: normal;
+}
+
+/**/
+
+table {
+    border: 2px solid #02BD8E;
+    background-color: white;
+    margin: auto;
+}
+
+.FiltroHomeUtente, .CheckoutForm, .FiltroHomeAmmin,
+.FiltroResocontoVendite, .AggiungiProdottoForm {
+    background-color: white;
+    margin: auto;
+    width: 37%;
+    border: 2px solid #02BD8E;
+    padding: 20px;
+    text-align: center;
+    font-size: 20px;
+    text-align: left;
+}
+
+.FiltroHomeUtente input,
+.CheckoutForm input,
+.FiltroHomeAmmin input,
+.FiltroResocontoVendite input,
+.AggiungiProdottoForm input{
+    width: 100%;
+}

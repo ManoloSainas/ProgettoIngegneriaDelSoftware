@@ -1,0 +1,86 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Home amministratore</title>
+        <meta name="description" content="Home amministratore" />
+        <meta name="keywords" content="" />
+        <meta name="author" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+
+    <body>      
+        <div class="homeAmm">
+
+            <!-- Div contenente il filtro e il logout -->
+            <div>
+                <h1>Home amministratore</h1> 
+
+                <a href="../Aggiungi_prodotto"><button class="button" id="aggiungiProdotto" type="button" 
+                    value="aggiungiProdotto">Aggiungi prodotto</button></a>
+                <a href="../login"><button id="logout" class="button" type="button" value="logout">Logout</button></a>
+            </div>
+
+            <br><hr><br>
+
+            <div class="FiltroHomeAmmin">
+                <!-- Filtro per cercare mediante un form -->
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input id="filtra" class="button" type="submit" value="Filtra">
+                </form> 
+            </div>
+
+            <br>
+
+            <!-- Tabella contenente i prodotti presenti nel negozio -->
+            <div>
+                <table id="prodottiNegozio">
+                    <tr>
+                        <th><b>Nome prodotto</b></th>
+                        <th><b>Tipologia</b></th>
+                        <th><b>Descrizione</b></th>
+                        <th><b>Prezzo</b></th>
+                        <th><b>Disponibilità</b></th>
+                        <th><b>Azione</b></th>
+                    </tr>
+                    <!-- Qui verranno inserite le righe per i prodotti -->
+                    {% for prodotto in prodotti %}
+                    <tr class="prodotto">
+                        <td class="nome"> {{ prodotto.nome }} </td>
+                        <td class="tipologia"> {{ prodotto.tipologia }} </td>
+                        <td class="descrizione"> {{ prodotto.descrizione }} </td>
+                        <td class="prezzo"> {{ prodotto.prezzo }} </td>
+                        <td class="quantita"> {{ prodotto.quantita }} </td>
+
+                        <td><form method="post" action="../Modifica_prodotto/">
+                            {% csrf_token %}
+                            <input type="hidden" name="prodotto_id" value="{{prodotto.id}}">
+                            <input class="button" id="modifica_prodotto_{{ prodotto.id }}" type="submit" value="Modifica prodotto">
+                        </form></td>
+
+                    </tr>        
+                    {% endfor %}
+                </table>        
+            </div>
+
+            <br><hr><br>
+    
+            <div>
+                <a href="../Resoconto_vendite"><button class="button" id="resocontoVendite" type="button" 
+                    value="aggiungiProdotto">Resoconto vendite</button></a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="centered-footer">
+            <h5>Progetto di Michele Melis, Manolo Sainas, Chiara Ganga</h5>
+        </footer>
+
+    </body>
+</html>

@@ -1,0 +1,89 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Carrello</title>
+        <meta name="description" content="Carrello" />
+        <meta name="keywords" content="" />
+        <meta name="author" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+
+    <body>      
+        <div class="Carrello">
+
+            <!-- Div contenente la home e il logout -->
+            <div>
+                <h1>Carrello</h1> 
+                <a href="../home"><button id="homeCarr" class="button" type="button" value="home">Home</button></a>
+                <a href="../login"><button id="logoutCarr" class="button" type="button" value="logout">Logout</button></a>
+            </div>
+
+            <br><hr><br>
+
+            <!-- Tabella contenente i prodotti presenti nel negozio -->
+            <div>
+                <table id="prodottiCarrello">
+                    <thead>
+                        <tr>
+                            <th><b>Nome prodotto</b></th>
+                            <th><b>Tipologia</b></th>
+                            <th><b>Quantità</b></th>
+                            <th><b>Azione</b></th>
+                            <th><b>Prezzo</b></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <!-- Qui verranno inserite le righe per i prodotti -->
+                        
+                    {% for prodottoCarrello in prodottiCarrello %}
+                    <tr>
+                        <td> {{ prodottoCarrello.prodotto.nome }} </td>
+                        <td> {{ prodottoCarrello.prodotto.tipologia }} </td>
+                        <td id="{{ prodottoCarrello.prodotto.id }}"> {{ prodottoCarrello.quantita }} </td>
+                        
+                        <td><form method="post">
+                            {% csrf_token %}
+                            <input id="id_prodotto_carrello" type="hidden" name="prodotto_id" value="{{prodottoCarrello.id}}">
+                            <input class="button" id="rimuovi_prodotto_{{ prodottoCarrello.prodotto.id }}" type="submit" value="Rimuovi prodotto">
+                        </form></td>
+
+                        <td> {{ prodottoCarrello.totale }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>   
+
+                <br>
+
+                <!-- Prezzo totale di tutti i prodotti del carrello -->
+                <table id="totale">
+                    <tr>
+                        <th><b>Totale</b></th>
+                        <th> {{ carrello.totale }} </th>   
+                    </tr>
+                </table>
+            </div>
+
+            <br><hr><br>
+
+            <!-- Div per il checkout-->
+            <div>
+                <a href="../checkout"><button id="checkout" class="button" type="button" value="checkout">Checkout</button></a>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="centered-footer">
+            <h5>Progetto di Michele Melis, Manolo Sainas, Chiara Ganga</h5>
+        </footer>
+
+    </body>
+</html>

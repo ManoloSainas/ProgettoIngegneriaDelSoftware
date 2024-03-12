@@ -8,6 +8,7 @@ Ingegneria del
 Software - PROGETTO
 
 Si richiede:
+
 ● La formulazione dei requisiti usando User Stories o Casi d'Uso, con relativo diagramma
 UML. In tale formulazione, a partire dalle specifiche riportate in questo documento, il
 gruppo ha libertà di interpretazione in caso di dubbi o ambiguità
